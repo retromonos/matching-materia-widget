@@ -24,6 +24,12 @@ const entries = {
 			path.join(srcPath, 'directives', 'audioControls.coffee'),
 			path.join(srcPath, 'player.scss'),
 	],
+	'scorescreen': [
+		path.join(srcPath, 'scorescreen.html'),
+		path.join(srcPath, 'scorescreen.js'),
+		path.join(srcPath, 'scorescreen.scss'),
+	],
+
 	'audioControls': [
 			path.join(srcPath, 'audioControls.html'),
 			path.join(srcPath, 'directives', 'audioControls.coffee'),
@@ -33,10 +39,11 @@ const entries = {
 
 const customCopy = copy.concat([
 	{
-		from: path.join(srcPath, '_guides', 'assets'),
+		from: path.join(__dirname, 'src', '_guides', 'assets'),
 		to: path.join(outputPath, 'guides', 'assets'),
 		toType: 'dir'
-	}
+	},
+
 ])
 
 // options for the build

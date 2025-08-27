@@ -5,7 +5,7 @@
   },
   "version": "1.2.1",
   "dependencies": {
-    "materia-widget-development-kit": "~3.0.0"
+    "materia-widget-development-kit": "^3.0.3"
   },
   "devDependencies": {
     "angular": "1.8.3",
