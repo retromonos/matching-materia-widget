@@ -6843,15 +6843,15 @@ map-visit@^1.0.0:
   dependencies:
     object-visit "^1.0.0"
 
-materia-widget-dependencies@0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/materia-widget-dependencies/-/materia-widget-dependencies-0.2.0.tgz#ebec53a9c10991bacf8b8ea9d6dfba5cd40ed912"
-  integrity sha512-eqab8DdPD0tzEicJWfgc/BJko/MSZarECmXENNwt4NUr757HCQJl7M+q70eXYO84Ssk3kHySTELgOTLES/FODg==
+materia-widget-dependencies@0.4.2:
+  version "0.4.2"
+  resolved "https://registry.yarnpkg.com/materia-widget-dependencies/-/materia-widget-dependencies-0.4.2.tgz#d6664f7c525ae624a0ca87579865b1864c53a2d7"
+  integrity sha512-JyyeE9HSRC9tyEPmsEC+UsfC51z+Y6xT8qzn+2PGvj6T/Mda/hFK/Uqw0WA5pE42+SpjYOaJ2B8CK0bT9rZ21A==
 
-materia-widget-development-kit@~3.0.0:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/materia-widget-development-kit/-/materia-widget-development-kit-3.0.1.tgz#16b48010d68c52a2382f117e628b714c5a2be47d"
-  integrity sha512-qVd9yzFPleu+FAYvboiA+EGvbP1e2GsVvhl4IG/YIxNXCvEtP7jZcCtpqXVY9p8piUPBAmxXY5E/NAS06iXRIw==
+materia-widget-development-kit@^3.0.3:
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/materia-widget-development-kit/-/materia-widget-development-kit-3.0.3.tgz#d3662c195eec8e80080b5a941afc495644e72ceb"
+  integrity sha512-vh80kEiNaJ6x1vD+sWmlSsZhKXfrsFo4t7la8+BAS/tnw5J1PkTbDEQrFj/8vWL8r1d1Kz3DJa8xWeSHqAvoMA==
   dependencies:
     "@babel/core" "^7.22.17"
     "@babel/preset-env" "^7.20.2"
@@ -6874,7 +6874,7 @@ materia-widget-development-kit@~3.0.0:
     hbs "^4.2.0"
     html-loader "^4.2.0"
     html-webpack-plugin "^5.5.3"
-    materia-widget-dependencies "0.2.0"
+    materia-widget-dependencies "0.4.2"
     mini-css-extract-plugin "^2.7.2"
     npm-check-updates "^16.10.9"
     path "^0.12.7"
