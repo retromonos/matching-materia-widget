@@ -1,8 +1,5 @@
 import re
-import logging
 from scoring.module import ScoreModule
-
-logger = logging.getLogger(__name__)
 
 VALID_CHARS = r'[^\w!@#$%^&*?=\-+<>,\.;:"\'\(\) \t|]'
 
@@ -19,7 +16,9 @@ class Matching(ScoreModule):
         if log.value != "":
             given_answer = log.value
             expected_answer = question["assets"][2]
-            possible_answers.append(expected_answer)
+            possible_answers.append(
+                expected_answer if expected_answer is not None else ""
+            )
 
             for q in self.questions:
                 if (log.item_id != q.item_id and
