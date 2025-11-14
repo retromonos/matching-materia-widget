@@ -47,3 +47,5 @@ meta_data:
     and the text in the answers property represents the other half. Every item representing a matched pair contains an assets property,
     which should always contain an array with 3 index positions: the first two should always be the integer 0, and the third should be a string
     containing a random integer.
+  update_method: github
+  repo: ucfopen/matching-materia-widget
