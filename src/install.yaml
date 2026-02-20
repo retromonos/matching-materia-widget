@@ -15,14 +15,14 @@ general:
 files:
   creator: creator.html
   player: player.html
-  # score_screen: scorescreen.html
+  score_screen: scorescreen.html
   flash_version: 0
   creator_guide: guides/creator.html
   player_guide: guides/player.html
 score:
   is_scorable: Yes
   score_module: Matching
-  # score_screen: scorescreen.html
+  score_screen: scorescreen.html
 meta_data:
   features:
     - Customizable

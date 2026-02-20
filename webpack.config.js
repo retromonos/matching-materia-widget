@@ -24,11 +24,11 @@ const entries = {
 			path.join(srcPath, 'directives', 'audioControls.coffee'),
 			path.join(srcPath, 'player.scss'),
 	],
-	// 'scorescreen': [
-	// 	path.join(srcPath, 'scorescreen.html'),
-	// 	path.join(srcPath, 'scorescreen.js'),
-	// 	path.join(srcPath, 'scorescreen.scss'),
-	// ],
+	'scorescreen': [
+		path.join(srcPath, 'scoreScreen.html'),
+	 	path.join(srcPath, 'scoreScreen.js'),
+	 	path.join(srcPath, 'scoreScreen.scss'),
+	],
 
 	'audioControls': [
 			path.join(srcPath, 'audioControls.html'),
