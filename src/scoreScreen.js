@@ -8,7 +8,6 @@ const cardListElement = document.getElementById('score-card-list');
 const template = document.getElementById('card-template');
 
 const screenReaderTbodyElement = document.getElementById('screenReaderTbody');
-const message = document.getElementById('message');
 
 
 const start = (instance, qset, scoreTable, isPreview, qsetVersion) => {
@@ -43,8 +42,6 @@ const update = (qset, scoreTable) => {
             const clone = template.content.cloneNode(true);
             
             const rowContainer = clone.querySelector('.match-row');
-
-            const pairLabel = clone.querySelector('.pair-label');
             const termPill = clone.querySelector('.term-pill');
             const userPill = clone.querySelector('.user-pill');
             const iconBadge = clone.querySelector('.icon-badge');
@@ -52,9 +49,11 @@ const update = (qset, scoreTable) => {
 
             const correctionContainer = clone.querySelector('.correction-container');
             const correctPill = clone.querySelector('.correct-pill');
-
-            pairLabel.textContent = `PAIR ${index + 1}`;
-            termPill.textContent = termText || "Term";
+            if (row.has_audio){ 
+                termPill.innerHTML = `<span class="audio-indicator" aria-hidden="true"></span> ${termText || "Term"}`;
+            } else { 
+                termPill.innerHTML = `${termText || "Term"}`;
+            }
             userPill.textContent = userResponse || "No Match";
             correctPill.textContent = correctAnswer;
 

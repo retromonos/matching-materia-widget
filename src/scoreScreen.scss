@@ -2,13 +2,13 @@ body {
   background: #2D3E50; /* Dark Slate Background */
   color: #fff;
   font-family: 'Inter', sans-serif;
-  padding: 30px;
+  padding: 15px 30px 30px 30px;
 }
 
 h1 {
   text-align: center;
   color: #fff;
-  margin-bottom: 0px;
+  margin: 0.5em 0;
 }
 
 .headings {
@@ -34,14 +34,15 @@ h1 {
 #score-card-list {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 16px;
   width: 100%;
+  padding: 0;
 }
 
 .match-row {
   background-color: #34495E; 
   border-radius: 16px;
-  padding: 30px 30px 40px 30px;
+  padding: 16px 20px;
   display: flex;
   flex-direction: column;
   gap: 15px;
@@ -59,8 +60,26 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: space-between; 
-  gap: 15px;
+  //gap: 15px;
   width: 100%;
+
+  &:after {
+  position: absolute;
+  left: 50%;
+  content: "x"; 
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  font-size: .9em;
+  margin-left: -15px;
+
+
+  }
 }
 
 .pill {
@@ -74,6 +93,17 @@ h1 {
   align-items: center;
   justify-content: center;
   flex: 1; 
+  position: relative;
+
+  .audio-indicator {
+    background: url('assets/volume-low.svg') 0 0 no-repeat; 
+    background-size: 30px 30px;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    left: 10px;
+  }
+
 }
 
 /* left pill is always Grey */
@@ -91,6 +121,7 @@ h1 {
   align-items: center;
   justify-content: center;
   position: relative; /* center icon */
+  display: none;
 }
 
 .line {
@@ -115,22 +146,48 @@ h1 {
 .user-pill {
   flex: 0 0 30%;
   max-width: 30%;
+  position: relative;
+
+  &:before {
+    display: block;
+    height: 0; 
+    border-top: solid 3px #26A69A;
+    content: "";
+    position: absolute; 
+    width: 60%; 
+    left: -70%; 
+  }
 }
 
 /* --- DYNAMIC STATES --- */
 .state-correct .line { background-color: #26A69A; }
 .state-correct .icon-badge { background-color: #26A69A; }
 .state-correct .user-pill { 
-    background-color: #26A69A;; 
+    background-color: #26A69A; 
     color: #FFF;
+} 
+.state-correct .interaction-container:after { 
+    background-color: #26A69A; 
+    color: #FFF;
+    content: "✓";
 }
 
 .state-incorrect .line { background-color: #EF4444; }
 .state-incorrect .icon-badge { background-color: #EF4444; }
 .state-incorrect .user-pill { 
+    &:before { 
+      border-color: #EF4444;
+    }
     background-color: #EF4444; 
     color: white; 
 }
+
+.state-incorrect .interaction-container:after { 
+    background-color: #EF4444; 
+    color: white; 
+    content: "✕";
+}
+
 
 /* CHANGED: Correction Row (Hidden by default) */
 .correction-container {
@@ -148,7 +205,7 @@ h1 {
 }
 
 .correct-pill {
-  background-color: #26A69A;;
+  background-color: #26A69A;
   color: #ffffff;
   flex: 0 0 30%;
   max-width: 30%;

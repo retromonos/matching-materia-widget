@@ -44,6 +44,11 @@ const customCopy = copy.concat([
 		toType: 'dir'
 	},
 
+	{
+		from: path.join(__dirname, 'src', 'assets', 'volume-low.svg'), 
+		to: path.join(outputPath, 'assets', 'volume-low.svg'),
+	},
+
 ])
 
 // options for the build
