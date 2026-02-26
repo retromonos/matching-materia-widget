@@ -10,13 +10,10 @@
     </head>
     <body>
         <section id="mainContainer" class="container">
-            <div id="message"></div>
+            <h1 id="responses" class="headings">Review Your Answers Below</h1>
             
-            <h1 id="responses" class="headings">Assessment Complete</h1>
-            <p class="sub-heading">Review your answers below</p>
-            
-            <div id="score-card-list">
-                </div>
+            <ul id="score-card-list">
+            </ul>
         </section>
 
         <section id="scoreTableContainer" class="container" style="display:none;">
@@ -33,13 +30,14 @@
         </section>
 
         <template id="card-template">
-            <div class="match-row">
-                
-                <div class="pair-label">PAIR #</div>
+            <li class="match-row">
                 
                 <div class="interaction-container">
                     
-                    <div class="pill term-pill">Term Text</div>
+                    <div class="pill term-pill">
+                        <span class="audio-indicator" aria-hidden="true">🔊</span>
+                        Term Text
+                    </div>
 
                     <div class="connector">
                         <div class="line"></div>
@@ -53,7 +51,7 @@
                     <span class="correction-label">Correct answer:</span>
                     <div class="pill correct-pill">Correct Answer Text</div>
                 </div>
-            </div>
+            </li>
         </template>
 
         <script src="scorescreen.js"></script>
