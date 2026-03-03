@@ -20,9 +20,6 @@ const getRenderedHeight = () => {
 }
 
 const update = (qset, scoreTable) => {
-	console.log("qset is:", qset);
-	console.log("scoreTable is:", scoreTable); // should include .data array
-
 	//check if instructor hid answers
 	const showAnswers = qset && qset.options ? !qset.options.hide_correct : true;
     const items = qset.items[0].items
