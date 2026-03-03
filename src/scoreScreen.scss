@@ -1,3 +1,5 @@
+$mobile_w_px: 576px;
+
 body {
   background: #2D3E50; /* Dark Slate Background */
   color: #fff;
@@ -209,4 +211,53 @@ h1 {
   color: #ffffff;
   flex: 0 0 30%;
   max-width: 30%;
+}
+
+@media (width < $mobile_w_px) {
+  body {
+    padding: 4px 8px 4px 8px;
+  }
+
+  .headings {
+    font-size: 1.5rem;
+  }
+
+  .match-row {
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .pill {
+    min-width: 0px;
+    width: fit-content;
+    padding: 6px 12px;
+    border-radius: 16px; 
+
+    .audio-indicator {
+      background-size: 15px 15px;
+      width: 15px;
+      height: 15px;
+    }
+  }
+
+  .term-pill {
+    min-width: 0px;
+    width: fit-content;
+  }
+
+  .user-pill {
+    min-width: 0px;
+    width: fit-content;
+    &:before {
+      border-top: 0px;
+      width: 0px; 
+    }
+  }
+
+  .correct-pill {
+    min-width: 0px;
+    width: fit-content;
+  }
 }
