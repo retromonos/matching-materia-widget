@@ -64,24 +64,6 @@ h1 {
   justify-content: space-between; 
   //gap: 15px;
   width: 100%;
-
-  &:after {
-  position: absolute;
-  left: 50%;
-  content: "x"; 
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 900;
-  font-size: .9em;
-  margin-left: -15px;
-
-
-  }
 }
 
 .pill {
@@ -123,7 +105,9 @@ h1 {
   align-items: center;
   justify-content: center;
   position: relative; /* center icon */
-  display: none;
+  display: block;
+  margin-left: 16px;
+  margin-right: 16px;
 }
 
 .line {
@@ -143,22 +127,14 @@ h1 {
   font-weight: 900;
   font-size: 1.1rem;
   position: absolute; 
+  left: calc(50% - 15px);
+  top: -15px;
 }
 
 .user-pill {
   flex: 0 0 30%;
   max-width: 30%;
   position: relative;
-
-  &:before {
-    display: block;
-    height: 0; 
-    border-top: solid 3px #26A69A;
-    content: "";
-    position: absolute; 
-    width: 60%; 
-    left: -70%; 
-  }
 }
 
 /* --- DYNAMIC STATES --- */
@@ -168,11 +144,6 @@ h1 {
     background-color: #26A69A; 
     color: #FFF;
 } 
-.state-correct .interaction-container:after { 
-    background-color: #26A69A; 
-    color: #FFF;
-    content: "✓";
-}
 
 .state-incorrect .line { background-color: #EF4444; }
 .state-incorrect .icon-badge { background-color: #EF4444; }
@@ -183,13 +154,6 @@ h1 {
     background-color: #EF4444; 
     color: white; 
 }
-
-.state-incorrect .interaction-container:after { 
-    background-color: #EF4444; 
-    color: white; 
-    content: "✕";
-}
-
 
 /* CHANGED: Correction Row (Hidden by default) */
 .correction-container {
@@ -250,10 +214,6 @@ h1 {
   .user-pill {
     min-width: 0px;
     width: fit-content;
-    &:before {
-      border-top: 0px;
-      width: 0px; 
-    }
   }
 
   .correct-pill {
