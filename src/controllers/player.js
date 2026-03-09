@@ -1,13 +1,3 @@
-/*
- * decaffeinate suggestions:
- * DS101: Remove unnecessary use of Array.from
- * DS102: Remove unnecessary code created because of implicit returns
- * DS104: Avoid inline assignments
- * DS202: Simplify dynamic range loops
- * DS205: Consider reworking code to avoid use of IIFEs
- * DS207: Consider shorter variations of null checks
- * Full docs: https://github.com/decaffeinate/decaffeinate/blob/main/docs/suggestions.md
- */
 angular.module('matching', [])
 .controller('matchingPlayerCtrl', ['$scope', '$timeout', '$sce', function($scope, $timeout, $sce) {
 	const materiaCallbacks = {};
@@ -137,13 +127,15 @@ angular.module('matching', [])
 			// needed for scaling spacing between matching lines
 
 			let curCount = ITEMS_PER_PAGE
+			let tSplitPoint = _splitPoint == -1 ? 0 : _splitPoint
+			let tLeftover = _leftover == 0 ? ITEMS_PER_PAGE : _leftover
 			if (_pageIndex === ($scope.totalPages - 2)) {
-				curCount = _splitPoint
+				curCount = _splitPoint == -1 ? ITEMS_PER_PAGE : _splitPoint
 			} else if (_pageIndex === ($scope.totalPages - 1)) {
 				if ($scope.totalItems <= ITEMS_PER_PAGE)
-					curCount = _leftover
+					curCount = tLeftover
 				else
-					curCount = ITEMS_PER_PAGE - _splitPoint + _leftover
+					curCount = ITEMS_PER_PAGE - tSplitPoint + _leftover
 			}
 
 			var wrapQuestionUrl = function() {
@@ -250,8 +242,8 @@ angular.module('matching', [])
 		, ANIMATION_DURATION*1.05);
 
 		if (_boardElement) { _boardElement.focus(); }
-		if (direction === 'next') { return _assistiveNotification('Page incremented.');
-		} else if (direction === 'previous') { return _assistiveNotification('Page decremented.'); }
+		if (direction === 'next') { _assistiveNotification('Page incremented.');
+		} else if (direction === 'previous') { _assistiveNotification('Page decremented.'); }
 	};
 
 
@@ -268,13 +260,13 @@ angular.module('matching', [])
 			matchPageId: $scope.currentPage
 		});
 
-		if ($scope.matches.length === $scope.totalItems) { return _assistiveAlert('All matches complete. The done button is now available.'); }
+		if ($scope.matches.length === $scope.totalItems) { _assistiveAlert('All matches complete. The done button is now available.'); }
 	};
 
 	const _applyCircleColor = function() {
 		// find appropriate circle
 		$scope.questionCircles[$scope.currentPage][$scope.selectedQA[$scope.currentPage].question].color = _getColor();
-		return $scope.answerCircles[$scope.currentPage][$scope.selectedQA[$scope.currentPage].answer].color = _getColor();
+		$scope.answerCircles[$scope.currentPage][$scope.selectedQA[$scope.currentPage].answer].color = _getColor();
 	};
 
 	var _getColor = () => 'c' + colorNumber;
@@ -354,20 +346,20 @@ angular.module('matching', [])
 
 			_updateLines();
 
-			return $scope.unapplyHoverSelections();
+			$scope.unapplyHoverSelections();
 
-		} else if ($scope.selectedQA[$scope.currentPage].question !== -1) { return _assistiveNotification($scope.selectedQuestion.text + ' selected.');
-		} else if ($scope.selectedQA[$scope.currentPage].answer !== -1) { return _assistiveNotification($scope.selectedAnswer.text + ' selected.'); }
+		} else if ($scope.selectedQA[$scope.currentPage].question !== -1) { _assistiveNotification($scope.selectedQuestion.text + ' selected.');
+		} else if ($scope.selectedQA[$scope.currentPage].answer !== -1) { _assistiveNotification($scope.selectedAnswer.text + ' selected.'); }
 	};
 
 	var _clearSelections = function() {
 		$scope.selectedQA[$scope.currentPage].question = -1;
-		return $scope.selectedQA[$scope.currentPage].answer = -1;
+		$scope.selectedQA[$scope.currentPage].answer = -1;
 	};
 
 	var _updateCompletionStatus = function() {
 		$scope. completePerPage  = [];
-		return Array.from($scope.matches).map((match) =>
+		Array.from($scope.matches).map((match) =>
 			!$scope.completePerPage[match.matchPageId] ? ($scope.completePerPage[match.matchPageId] = 1)
 			: $scope.completePerPage[match.matchPageId]++);
 	};
@@ -419,11 +411,11 @@ angular.module('matching', [])
 		$scope.prelines = [];
 		$scope.questionCircles[$scope.currentPage].forEach(function(element) {
 			element.isHover = false;
-			return element.lightHover = false;
+			element.lightHover = false;
 		});
-		return $scope.answerCircles[$scope.currentPage].forEach(function(element) {
+		$scope.answerCircles[$scope.currentPage].forEach(function(element) {
 			element.isHover = false;
-			return element.lightHover = false;
+			element.lightHover = false;
 		});
 	};
 
@@ -483,7 +475,7 @@ angular.module('matching', [])
 			// right column
 			liney2 : $scope.answerCircles[$scope.currentPage][endIndex].cy
 		});
-		return $scope.answerCircles[$scope.currentPage][endIndex].isHover = true;
+		$scope.answerCircles[$scope.currentPage][endIndex].isHover = true;
 	};
 
 	$scope.drawPrelineToLeft = function(hoverItem) {
@@ -518,7 +510,7 @@ angular.module('matching', [])
 			// left column
 			liney2 : $scope.questionCircles[$scope.currentPage][endIndex].cy
 		});
-		return $scope.questionCircles[$scope.currentPage][endIndex].isHover = true;
+		$scope.questionCircles[$scope.currentPage][endIndex].isHover = true;
 	};
 
 	$scope.selectQuestion = function(selectionItem) {
@@ -531,7 +523,7 @@ angular.module('matching', [])
 		// selectedQA stores the index of the current selected answer and question for a particular page
 		$scope.selectedQA[$scope.currentPage].question = indexId;
 
-		return _checkForMatches();
+		_checkForMatches();
 	};
 
 	$scope.selectAnswer = function(selectionItem) {
@@ -543,7 +535,7 @@ angular.module('matching', [])
 		$scope.selectedAnswer = $scope.pages[$scope.currentPage].answers[indexId];
 		// selectedQA stores the index of the current selected answer and question for a particular page
 		$scope.selectedQA[$scope.currentPage].answer = indexId;
-		return _checkForMatches();
+		_checkForMatches();
 	};
 
 	// toggle keyboard instructions modal
@@ -555,7 +547,7 @@ angular.module('matching', [])
 				$timeout(function() {
 					const dismissElement = document.getElementById('dialog-dismiss');
 					if (dismissElement) { dismissElement.focus(); }
-					if (_boardElement) { return _boardElement.setAttribute('inert', true); }
+					if (_boardElement) { _boardElement.setAttribute('inert', true); }
 				});
 				break;
 
@@ -563,7 +555,7 @@ angular.module('matching', [])
 				$timeout(function() {
 					if (_boardElement) { _boardElement.removeAttribute('inert'); }
 					const instructionsElement = document.getElementById('instructions-btn');
-					if (instructionsElement) { return instructionsElement.focus(); }
+					if (instructionsElement) { instructionsElement.focus(); }
 				});
 				break;
 		}
@@ -577,23 +569,23 @@ angular.module('matching', [])
 		switch (event.key) {
 			case 'Enter':
 				if (item && (item.type === 'question')) { $scope.selectQuestion(item); }
-				if (item && (item.type === 'answer')) { return $scope.selectAnswer(item); }
+				if (item && (item.type === 'answer')) { $scope.selectAnswer(item); }
 				break;
 			case 'ArrowLeft':
 				try {
 					if (item.type === 'answer') { document.getElementsByClassName('column1')[0].getElementsByClassName('word')[0].focus(); }
-					return event.preventDefault();
+					event.preventDefault();
 				} catch (error1) {
 					error = error1;
-					return console.warn(error);
+					console.warn(error);
 				}
 			case 'ArrowRight':
 				try {
 					if (item.type === 'question') { document.getElementsByClassName('column2')[0].getElementsByClassName('word')[0].focus(); }
-					return event.preventDefault();
+					event.preventDefault();
 				} catch (error2) {
 					error = error2;
-					return console.warn(error);
+					console.warn(error);
 				}
 		}
 	};
@@ -619,7 +611,7 @@ angular.module('matching', [])
 			}
 			Materia.Score.submitQuestionForScoring(qsetItems[i].id, mappedQsetItemText, mappedQsetAudioString);
 		}
-		return Materia.Engine.end(true);
+		Materia.Engine.end(true);
 	};
 
 	var _shuffle = function(qsetItems) {
@@ -638,14 +630,14 @@ angular.module('matching', [])
 
 	var _assistiveNotification = function(msg) {
 		const notificationEl = document.getElementById('assistive-notification');
-		if (notificationEl) { return notificationEl.innerHTML = msg; }
+		if (notificationEl) { notificationEl.innerHTML = msg; }
 	};
 
 	var _assistiveAlert = function(msg) {
 		const alertEl = document.getElementById('assistive-alert');
-		if (alertEl) { return alertEl.innerHTML = msg; }
+		if (alertEl) { alertEl.innerHTML = msg; }
 	};
 
-	return Materia.Engine.start(materiaCallbacks);
+	Materia.Engine.start(materiaCallbacks);
 }
 ]);
