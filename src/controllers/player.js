@@ -579,6 +579,7 @@ angular.module('matching', [])
 					error = error1;
 					console.warn(error);
 				}
+				break;
 			case 'ArrowRight':
 				try {
 					if (item.type === 'question') { document.getElementsByClassName('column2')[0].getElementsByClassName('word')[0].focus(); }
@@ -587,6 +588,7 @@ angular.module('matching', [])
 					error = error2;
 					console.warn(error);
 				}
+				break;
 		}
 	};
 
