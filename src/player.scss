@@ -299,7 +299,8 @@ html, body {
 		&.column1 {
 			padding-top: 2px;
 			width: 220px;
-			justify-self: end;
+			position: absolute;
+			right: 0;
 		}
 		&.column2 {
 			padding-top: 2px;
@@ -818,6 +819,10 @@ footer {
 
 		cursor: pointer;
 	}
+}
+
+.presgrid {
+	position: relative;
 }
 
 @media only screen
