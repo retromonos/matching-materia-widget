@@ -132,14 +132,16 @@
 						ng-attr-cx="{{circle.cx}}"
 						ng-attr-cy="{{circle.cy}}"
 						ng-class="{'hollows-selected' : answerCircles[currentPage][$index].isHover,
-							'hollows-hover' : answerCircles[currentPage][$index].lightHover}">
+							'hollows-hover' : answerCircles[currentPage][$index].lightHover,
+							'answerCircle' : answerCircles[currentPage][$index].type == 'answer-circle'}">
 					</circle>
 
 					<circle
 						class = "{{circle.color}}"
 						ng-repeat="circle in answerCircles[currentPage]"
 						ng-class="{'selected' : applyCircleClass(circle),
-							'circleHover': answerCircles[currentPage][$index].isHover}"
+							'circleHover': answerCircles[currentPage][$index].isHover,
+							'answerCircle' : answerCircles[currentPage][$index].type == 'answer-circle'}"
 						ng-attr-r="{{circle.r/2}}"
 						ng-attr-cx="{{circle.cx}}"
 						ng-attr-cy="{{circle.cy}}">

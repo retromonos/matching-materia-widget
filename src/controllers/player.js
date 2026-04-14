@@ -36,7 +36,7 @@ angular.module('matching', [])
 	const ITEMS_PER_PAGE = 6;
 	const NUM_OF_COLORS = 7;
 	const CIRCLE_START_X = 20;
-	const CIRCLE_END_X = `94%`;
+	const CIRCLE_END_X = `100%`;
 	const CIRCLE_RADIUS = 10;
 	const CIRCLE_SPACING = 72;
 	const CIRCLE_OFFSET = 29;
