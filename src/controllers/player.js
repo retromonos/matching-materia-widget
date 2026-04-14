@@ -37,6 +37,7 @@ angular.module('matching', [])
 	const NUM_OF_COLORS = 7;
 	const CIRCLE_START_X = 20;
 	const CIRCLE_END_X = `100%`;
+	const LINE_END_X = `95%`;
 	const CIRCLE_RADIUS = 10;
 	const CIRCLE_SPACING = 72;
 	const CIRCLE_OFFSET = 29;
@@ -377,7 +378,7 @@ angular.module('matching', [])
 				result.push($scope.lines[match.matchPageId].push({
 					startX:CIRCLE_START_X,
 					startY:targetStartY,
-					endX:CIRCLE_END_X,
+					endX:LINE_END_X,
 					endY:targetEndY
 				}));
 			}
@@ -468,7 +469,7 @@ angular.module('matching', [])
 			// left column
 			linex1 : $scope.questionCircles[$scope.currentPage][startIndex].cx,
 			// right column
-			linex2 : CIRCLE_END_X,
+			linex2 : LINE_END_X,
 
 			// left column
 			liney1 : $scope.questionCircles[$scope.currentPage][startIndex].cy,
@@ -501,7 +502,7 @@ angular.module('matching', [])
 
 		$scope.prelines.push({
 			// right column
-			linex1 : CIRCLE_END_X,
+			linex1 : LINE_END_X,
 			// left column
 			linex2 : $scope.questionCircles[$scope.currentPage][endIndex].cx,
 
