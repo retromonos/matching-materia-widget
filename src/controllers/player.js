@@ -36,7 +36,7 @@ angular.module('matching', [])
 	const ITEMS_PER_PAGE = 6;
 	const NUM_OF_COLORS = 7;
 	const CIRCLE_START_X = 20;
-	const CIRCLE_END_X = `calc(100% - ${CIRCLE_START_X}px)`;
+	const CIRCLE_END_X = `94%`;
 	const CIRCLE_RADIUS = 10;
 	const CIRCLE_SPACING = 72;
 	const CIRCLE_OFFSET = 29;
@@ -45,7 +45,7 @@ angular.module('matching', [])
 
 	// uses percents to scale the value w/ mobile height changes
 	// perPage values are needed because the svg column scales to the size of the word cols
-	const _getCircleY = (index, perPage) => {return `calc(${((index+0.6) / perPage) * 100}%)`}
+	const _getCircleY = (index, perPage) => {return `${((index+0.6) / perPage) * 100}%`}
 
 	// called when the height of the words are changed,
 	// rescales the SVG holder element to the size of the button columns
